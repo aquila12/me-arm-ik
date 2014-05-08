@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ik.h"
+#include "fk.h"
 
 using namespace std;
 
@@ -21,6 +22,16 @@ int main()
     {
         if(solve(x, y, z, t0, t1, t2))
         {
+            // Check!
+            float X, Y, Z;
+            unsolve(t0, t1, t2, X, Y, Z);
+
+            if(distance(x, y, z, X, Y, Z) > 0.01)
+            {
+                cout<<"WARNING: Solution for ("<<x<<","<<y<<","<<z<<")";
+                cout<<"resulted in ("<<X<<","<<Y<<","<<Z<<")!"<<endl;
+            }
+
             ++valid;
         }
         else

@@ -15,8 +15,8 @@ void cart2polar(float a, float b, float& r, float& theta)
     // Don't try to calculate zero-magnitude vectors' angles
     if(r == 0) return;
 
-    float s = a / r;
-    float c = b / r;
+    float c = a / r;
+    float s = b / r;
 
     // Safety!
     if(s > 1) s = 1;
@@ -56,7 +56,7 @@ bool solve(float x, float y, float z, float& a0, float& a1, float& a2)
 {
     // Solve top-down view
     float r, th0;
-    cart2polar(x, y, r, th0);
+    cart2polar(y, x, r, th0);
 
     // Account for the wrist length!
     r -= L3;
